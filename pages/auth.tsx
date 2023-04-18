@@ -2,10 +2,10 @@ import Input from '@/components/Input'
 import React, { useCallback, useState } from 'react'
 import axios from 'axios'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/router'
 
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 
 export default function Auth() {
   const router = useRouter()
@@ -28,8 +28,7 @@ export default function Auth() {
         redirect: false,
         callbackUrl: '/',
       })
-
-      router.push('/')
+      router.push('/profiles')
     } catch (error) {
       console.log(error)
     }
@@ -100,13 +99,13 @@ export default function Auth() {
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
                 <FcGoogle
-                  onClick={() => signIn('google', { callbackUrl: '/' })}
+                  onClick={() => signIn('google', { callbackUrl: '/profiles' })}
                   size={30}
                 />
               </div>
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
                 <FaGithub
-                  onClick={() => signIn('github', { callbackUrl: '/' })}
+                  onClick={() => signIn('github', { callbackUrl: '/profiles' })}
                   size={30}
                 />
               </div>
